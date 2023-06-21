@@ -1,0 +1,59 @@
+<div class="container text-center mt-3 anyClass">
+  <h1 class="title-user mt-3">Lista de Usuarios</h1>
+  <div id="filtros-busqueda">
+    <div class="form-check form-switch" id="orden-alfabetico-user">
+      <label class="form-check-label mr-5">Orden Alfabético</label>
+      <input class="form-check-input" type="checkbox" id="flex-switch-check-user" data-filtro="{{filtro}}">
+    </div>
+    <div id="busqueda-user">
+      <span class="input-group-text" id="select-user">Nombre</span>
+      <form class="form-inline my-2 my-lg-0 ">
+        <input class="form-control mr-sm-2 valor" id="search-user" type="search" placeholder="Buscar"
+          aria-label="Search">
+        <button class="btn btn-outline-success" id="button-search-user">Buscar</button>
+      </form>
+    </div>
+  </div>
+  <div class="container mt-5">
+    <div class="row justify-content-center table-row">
+      <div class="col text-start">
+        <h4 class="">Nombre completo</h4>
+      </div>
+      <div class="col text-start">
+        <h4 class="">Nombre usuario</h4>
+      </div>
+      <div class="col text-start">
+        <h4 class="">Editar</h4>
+      </div>
+      <div class="col text-start">
+        <h4 class="">Eliminar</h4>
+      </div>
+    </div>
+  </div>
+  
+  {{#each user}}
+  <div class="row justify-content-center table-row" id="admin">
+    <div class="col text-start">
+      <span class="username">{{fullname}}</span>
+    </div>
+    <div class="col text-start">
+      <span class="username">{{username}}</span>
+    </div>
+    <div class="col text-start">
+      <a href="/usuarios/edit/{{id}}" class="icons" id="edit-admin"><i class="bi bi-pencil-square"
+          style="font-size: 24px;"></i></a>
+    </div>
+    <div class="col text-start">
+      <button id="delete-admin" class="icons delete-admin" data-id="{{id}}"><i class="bi bi-trash"
+          style="font-size: 24px;"></i></button>
+    </div>
+  </div>
+  {{else}}
+  <div class="col-md-4 mx-auto">
+    <div class="card card-body text-center">
+      <p>Aún no hay usuarios guardados.</p>
+      <a href="/usuarios/add">¡Crea uno!</a>
+    </div>
+  </div>
+  {{/each}}
+</div>

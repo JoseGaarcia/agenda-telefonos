@@ -1,0 +1,46 @@
+<div class="container mt-4 anyClass">
+    {{#if telefonos}}
+    <div id="filtro">
+        <div class="form-check form-switch mt-4" id="orden-alfabetico">
+            <label class="form-check-label mr-5" for="flexSwitchCheckDefault">Orden Alfabético</label>
+            <input class="form-check-input" type="checkbox" id="flex-switch-check" data-filtro="{{filtro}}">
+        </div>
+        <div id="busqueda">
+            <select class="form-control" id="select">
+                <option value="name">Nombre</option>
+                <option value="tlf">Teléfono</option>
+            </select>
+            <form class="form-inline my-2 my-lg-0">
+                <input class="form-control mr-sm-2 valor" id="search" type="search" placeholder="Buscar"
+                    aria-label="Search">
+                <button class="btn btn-outline-success" id="button-search">Buscar</button>
+            </form>
+        </div>
+    </div>
+    {{/if}}
+    <div class="row mt-2">
+        {{#each telefonos}}
+        <div class="col-lg-4 col-md-12 mb-5">
+            <div class="card-section border rounded p-3">
+                <div class="card-header-first rounded pb-5">
+                    <h3 class="card-header-title text-white pt-3">{{name}}</h2>
+                </div>
+                <div class="card-body text-center">
+                    <h1 class="m-2 card-text">{{tlf}}</h1>
+                    <p class="m-2 card-text">{{email}}</p>
+                    <p class="card-text card-text" id="timestamp">{{timeago created_at}}</p>
+                    <button class="btn btn-danger delete-phone" data-id="{{id}}">Eliminar tlf</button>
+                    <a href="/telefonos/edit/{{id}}" class="btn btn-secondary">Editar</a>
+                </div>
+            </div>
+        </div>
+        {{else}}
+        <div class="col-md-4 mx-auto">
+            <div class="card card-body text-center">
+                <p>Aún no hay teléfonos guardados.</p>
+                <a href="/telefonos/add">¡Crea uno!</a>
+            </div>
+        </div>
+        {{/each}}
+    </div>
+</div>
